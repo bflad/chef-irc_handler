@@ -2,7 +2,8 @@
 
 ## Description
 
-Chef Cookbook that installs handler for notifying on run failures via IRC.
+Chef cookbook that installs Chef handler for notifying IRC on Chef client
+failures (non-TTY runs).
 
 ## Requirements
 
