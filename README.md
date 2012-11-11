@@ -1,37 +1,74 @@
-# template-cookbook
+# chef-irc_handler [![Build Status](https://secure.travis-ci.org/bflad/chef-irc_handler.png?branch=master)](http://travis-ci.org/bflad/chef-irc_handler)
 
 ## Description
 
-A cool description – preferably wrapped at 80 characters.
+Chef Cookbook that installs handler for notifying on run failures via IRC.
 
 ## Requirements
 
 ### Platforms
 
 * RedHat 6.3 (Santiago)
-* Ubuntu 11.10 (Oneiric)
 * Ubuntu 12.04 (Precise)
 
 ### Cookbooks
 
-* apache2
-* logrotate
+* chef_hander
 
 ## Attributes
 
-* `node["template_cookbook"]["version"]` - Version of template-cookbook to
-  install.
-* `node["template_cookbook"]["user"]` - User for template-cookbook.
-* `node["template_cookbook"]["group"]` - Group for template-cookbook.
+* `node['chef_client']['handler']['irc']['channel']` - IRC channel, defaults to
+  "#admins"
+* `node['chef_client']['handler']['irc']['hostname']` - _required_ IRC hostname,
+  defaults to nil
+* `node['chef_client']['handler']['irc']['join']` - Join IRC channel prior to
+  messaging (required by some IRC servers like FreeNode), defaults to false
+* `node['chef_client']['handler']['irc']['nick']` - IRC nick, defaults to
+  "chef_client"
+* `node['chef_client']['handler']['irc']['nickserv_command']` - if different
+  Nickserv command is needed for identifying with Nickserv, see CarrierPigeon
+  documentation/code for more information, defaults to nil
+* `node['chef_client']['handler']['irc']['nickserv_password']` - IRC Nickserv
+  password, defaults to nil
+* `node['chef_client']['handler']['irc']['password']` - IRC server password,
+  defaults to nil
+* `node['chef_client']['handler']['irc']['port']` - IRC server port, defaults to
+  6667
+* `node['chef_client']['handler']['irc']['register_first']` - Register nick with
+  IRC before messaging (required by some IRC servers), defaults to false
+* `node['chef_client']['handler']['irc']['ssl']` - Use SSL for messaging IRC,
+  defaults to false
+* `node['chef_client']['handler']['irc']['timeout']` - Handler timeout in
+  seconds for messaging IRC, defaults to 30
 
 ## Recipes
 
-* `recipe[template-cookbook]` will install template-cookbook.
-* `recipe[template-cookbook::alternate]` will install alternate
-  template-cookbook.
+* `recipe[irc_handler]` installs and enables IRC chef_handler.
 
 ## Usage
 
-A short write-up of any usage specific instructions.  For example, default
-passwords, examples of attributes that alter recipe behavior, and
-auto-discovery of dependant services.
+* Set at least `node['chef_client']['handler']['irc']['hostname']`
+* Add `recipe[irc_handler]` to your node's run list
+
+## Contributing
+
+Please use standard Github issues/pull requests.
+
+## License and Author
+      
+Author:: Brian Flad (<bflad@wharton.upenn.edu>)
+
+Copyright:: 2012
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
