@@ -5,6 +5,14 @@
 Chef cookbook that installs Chef handler for notifying IRC on Chef client
 failures (non-TTY runs).
 
+Currently uses a modified version of chef-irc-snitch.rb (additional options can
+be passed in and Gist SSL broken by default in Ruby 1.9, so disabled Gist
+creation):
+* https://github.com/portertech/chef-irc-snitch
+
+Which uses:
+* https://github.com/portertech/carrier-pigeon
+
 ## Requirements
 
 ### Platforms
