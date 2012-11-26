@@ -101,7 +101,7 @@ class IRCSnitch < Chef::Handler
   end
 
   def message_irc
-    message = "Chef failed on #{node.name} (#{formatted_run_list})"
+    message = "Chef failed on #{node.name} (#{formatted_run_list}) with: #{run_status.formatted_exception}"
     #if @gist_url
     #  message += "#{@gist_url}"
     #else
