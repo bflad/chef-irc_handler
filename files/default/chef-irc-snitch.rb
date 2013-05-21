@@ -35,7 +35,7 @@ require "net/https"
 require "carrier-pigeon"
 
 class IRCSnitch < Chef::Handler
-  attr_writer :irc_uri, :join, :nickserv_command, :nickserv_password, :register_first, :ssl, :timeout
+  attr_writer :irc_uri, :join, :nickserv_command, :nickserv_password, :register_first, :ssl, :timeout, :channel_password
 
   def initialize(options = {})
     [:irc_uri].each do |option|
@@ -46,6 +46,7 @@ class IRCSnitch < Chef::Handler
     @join = options[:join]
     @nickserv_command = options[:nickserv_command]
     @nickserv_password = options[:nickserv_password]
+    @channel_password = options[:channel_password]
     @register_first = options[:register_first]
     @ssl = options[:ssl] || false
     @timeout = options[:timeout] || 30
@@ -116,6 +117,7 @@ class IRCSnitch < Chef::Handler
           :join => @join,
           :nickserv_command => @nickserv_command,
           :nickserv_password => @nickserv_password,
+          :channel_password => @channel_password,
           :register_first => @register_first
         )
       end
