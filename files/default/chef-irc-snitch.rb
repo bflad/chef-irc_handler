@@ -77,9 +77,6 @@ class IRCSnitch < Chef::Handler
         uri = URI.parse("https://api.github.com/gists")
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
-        #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        #http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-        #http.ca_path = '/etc/ssl/certs' if File.exists?('/etc/ssl/certs')
         request = Net::HTTP::Post.new(uri.request_uri)
         request.body = {
           "description" => "Chef run failed on #{node.name} @ #{@timestamp}",
@@ -102,12 +99,12 @@ class IRCSnitch < Chef::Handler
   end
 
   def message_irc
-    message = "Chef failed on #{node.name} (#{formatted_run_list}) with: #{run_status.formatted_exception}"
-    #if @gist_url
-    #  message += "#{@gist_url}"
-    #else
-    #  message += "ERROR: failed to create Gist."
-    #end
+    message = "Chef failed on #{node.name} (#{formatted_run_list}) with: "
+    if @gist_url
+      message += "#{@gist_url}"
+    else
+      message += "#{run_status.formatted_exception}"
+    end
     begin
       timeout(@timeout) do
         CarrierPigeon.send(
@@ -133,10 +130,8 @@ class IRCSnitch < Chef::Handler
     if run_status.failed? && !STDOUT.tty?
       @timestamp = Time.now.getutc
       Chef::Log.error("Chef run failed @ #{@timestamp}, snitchin' to chefs via IRC (#{@irc_uri})")
-      #create_gist
-      #unless @gist_url.nil?
-        message_irc
-      #end
+      create_gist
+      message_irc
     end
   end
 end
