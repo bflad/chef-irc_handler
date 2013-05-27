@@ -1,5 +1,6 @@
-# Copyright (c) 2012 Brian Flad (<bflad@wharton.upenn.edu>), Sean Porter
-# Consulting
+# Copyright (c) 2012-2013 Brian Flad (<bflad417@gmail.com>)
+# Copyright (c) 2013 Morgan Blackthorne (<stormerider@gmail.com>)
+# Copyright (c) 2012 Sean Porter Consulting
 
 # The below code is a fork of the original copyright holder. Original license
 # included.

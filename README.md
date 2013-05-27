@@ -67,9 +67,12 @@ Please use standard Github issues/pull requests.
 
 ## License and Author
       
-Author:: Brian Flad (<bflad@wharton.upenn.edu>)
-
-Copyright:: 2012
+* Author:: Brian Flad (<bflad417@gmail.com>)
+* Author:: Morgan Blackthorne (<stormerider@gmail.com>)
+* Copyright:: 2012-2013 Brian Flad
+* Copyright:: 2013 Morgan Blackthorne
+* Copyright:: 2012 University of Pennsylvania
+* Copyright:: 2012 Sean Porter Consulting
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
