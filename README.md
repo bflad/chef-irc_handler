@@ -28,6 +28,8 @@ Which uses:
 
 * `node['chef_client']['handler']['irc']['channel']` - IRC channel, defaults to
   "#admins"
+* `node['chef_client']['handler']['irc']['channel_password']` - Optional password
+  for the IRC channel.
 * `node['chef_client']['handler']['irc']['hostname']` - _required_ IRC hostname,
   defaults to nil
 * `node['chef_client']['handler']['irc']['join']` - Join IRC channel prior to

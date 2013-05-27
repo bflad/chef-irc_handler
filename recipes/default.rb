@@ -42,6 +42,7 @@ if irc['hostname']
       :join => irc['join'],
       :nickserv_command => irc['nickserv_command'],
       :nickserv_password => irc['nickserv_password'],
+      :channel_password => irc['channel_password'],
       :register_first => irc['register_first'],
       :timeout => irc['timeout']
     ]
