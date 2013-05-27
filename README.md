@@ -17,7 +17,8 @@ Which uses:
 
 ### Platforms
 
-* RedHat 6.3 (Santiago)
+* CentOS 6
+* RedHat 6
 * Ubuntu 12.04 (Precise)
 
 ### Cookbooks
