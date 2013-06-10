@@ -60,8 +60,9 @@ class IRCSnitch < Chef::Handler
 
   def formatted_gist
     ip_address = node.has_key?(:cloud) ? node.cloud.public_ipv4 : node.ipaddress
+    hostname = node.has_key?(:cloud) ? node.cloud.public_hostname : node.name
     node_info = [
-      "Node: #{node.name} (#{ip_address})",
+      "Node: #{hostname} (#{ip_address})",
       "Run list: #{node.run_list}",
       "All roles: #{node.roles.join(', ')}"
     ].join("\n")
